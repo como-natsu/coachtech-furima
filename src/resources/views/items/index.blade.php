@@ -13,16 +13,18 @@
 
 <div class="products">
     @forelse($products as $product)
-        <div class="product-card">
-            <a href="{{ url('/item/'.$product->id) }}">
-                <img src="{{ asset($product->image) }}" alt="{{ $product->name }}">
-                <p>{{ $product->name }}</p>
-                @if($product->sold)
-                    <span class="sold-badge">Sold</span>
-                @endif
-            </a>
-        </div>
+    <div class="product-card">
+        <a href="{{ url('/item/'.$product->id) }}">
+            <img src="{{ asset($product->image) }}" alt="{{ $product->name }}">
+            <p>{{ $product->name }}</p>
+            @if($product->sold)
+            <span class="sold-badge">Sold</span>
+            @endif
+        </a>
+    </div>
     @empty
-        <p>商品がありません。</p>
+    <p>商品がありません。</p>
     @endforelse
 </div>
+
+@endsection

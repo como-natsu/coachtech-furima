@@ -13,10 +13,11 @@
     <header class="header">
         <div class="header__inner">
             <a class="header__logo" href="/" >
-                <img src="'storage/images/logo.svg" alt="coachtech-logo">
+                <img src="{{ asset('storage/logo/logo.svg') }}" alt="coachtech-logo">
             </a>
         </div>
     </header>
+
     <div class="content">
         @yield('content')
     </div>

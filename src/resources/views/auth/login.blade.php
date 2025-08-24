@@ -19,7 +19,7 @@
             </div>
             <div class="form-group-content">
                 <div class="form-input--text">
-                    <input type="email" name="email" placeholder="例：test@example.com" value="{{ old('email') }}" />
+                    <input type="email" name="email" value="{{ old('email') }}" />
                 </div>
                 <div class="form-error">
                     @error('email')
@@ -34,7 +34,7 @@
             </div>
             <div class="form-group-content">
                 <div class="form-input--text">
-                    <input type="password" name="password" placeholder="例：coachtech1106" />
+                    <input type="password" name="password" />
                 </div>
                 <div class="form-error">
                     @error('password')
