@@ -22,6 +22,8 @@ class ProductsTableSeeder extends Seeder
             'name' => 'テストユーザー',
             'email' => 'testuser@example.com',
             'password' => Hash::make('password'),
+            'postcode' => '123-4567',
+            'address' => '東京都テスト区ダミー町1-2-3',
         ]);
 
 
