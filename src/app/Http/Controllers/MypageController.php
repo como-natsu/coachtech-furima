@@ -18,13 +18,24 @@ class MypageController extends Controller
     public function edit()
     {
         $user = Auth::user();
-        return view('mypage.profile_edit',compact('user'));
+
+        $isFirstLogin = empty($user->username);
+
+        return view('mypage.profile_edit',compact('user', 'isFirstLogin'));
     }
 
     public function update(ProfileRequest $request)
     {
         $user = Auth::user();
-        $user->update($request->validated());
+
+        $data = $request->only(['name', 'postcode', 'address']);
+
+        if ($request->hasFile('profile_image')) {
+            $path = $request->file('profile_image')->store('profile_images', 'public');
+            $data['profile_image'] = $path;
+        }
+
+        $user->update($data);
 
         return redirect('/mypage')->with('message', 'プロフィールを更新しました');
     }

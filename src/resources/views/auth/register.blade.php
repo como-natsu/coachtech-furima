@@ -63,7 +63,7 @@
             </div>
             <div class="form-group-content">
                 <div class="form-input-text">
-                    <input type="password" name="password-confirmation" />
+                    <input type="password" name="password_confirmation" />
                 </div>
             </div>
         </div>
