@@ -6,10 +6,12 @@ use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
-        public function register()
+
+    public function register()
     {
         return view('auth.register');
     }
+
 
     public function store(RegisterRequest $request)
     {
@@ -22,7 +24,8 @@ class AuthController extends Controller
         return redirect('/login');
     }
 
-        public function loginForm()
+
+    public function loginForm()
     {
         return view('auth.login');
     }

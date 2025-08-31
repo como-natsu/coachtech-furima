@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.auth')
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/login.css') }}">
@@ -15,10 +15,10 @@
         @csrf
         <div class="form-group">
             <div class="form-group-title">
-                <span class="form-label--item">メールアドレス</span>
+                <span class="form-label-item">メールアドレス</span>
             </div>
             <div class="form-group-content">
-                <div class="form-input--text">
+                <div class="form-input-text">
                     <input type="email" name="email" value="{{ old('email') }}" />
                 </div>
                 <div class="form-error">
@@ -30,10 +30,10 @@
         </div>
         <div class="form-group">
             <div class="form-group-title">
-                <span class="form-label--item">パスワード</span>
+                <span class="form-label-item">パスワード</span>
             </div>
             <div class="form-group-content">
-                <div class="form-input--text">
+                <div class="form-input-text">
                     <input type="password" name="password" />
                 </div>
                 <div class="form-error">

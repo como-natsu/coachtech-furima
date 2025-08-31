@@ -35,5 +35,13 @@ class ItemController extends Controller
         return view('items.index', compact('products', 'tab'));
     }
 
+    public function show($item_id)
+    {
+        $product = Product::with('user','condition')->findOrFail($item_id);
+
+        return view('items.show',compact('product'));
+
+    }
+
 
 }
