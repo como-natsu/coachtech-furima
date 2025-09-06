@@ -3,7 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\MypageController;
-use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Auth\RegisteredUserController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,7 +19,7 @@ use App\Http\Controllers\AuthController;
 Route::get('/', [ItemController::class,'index']);
 Route::get('/item/{item_id}', [ItemController::class, 'show']);
 
-Route::post('/register', [AuthController::class, 'store']);
+Route::post('/register', [RegisteredUserController::class, 'store']);
 
 
 Route::middleware(['auth'])->group(function(){

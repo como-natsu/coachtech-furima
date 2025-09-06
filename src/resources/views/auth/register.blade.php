@@ -33,7 +33,7 @@
             </div>
             <div class="form-group-content">
                 <div class="form-input-text">
-                    <input type="email" name="email" value="{{ old('email') }}" />
+                    <input type="text" name="email" value="{{ old('email') }}" />
                 </div>
                 <div class="form-error">
                     @error('email')
