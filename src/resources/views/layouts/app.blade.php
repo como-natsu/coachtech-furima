@@ -19,7 +19,7 @@
                 </a>
                 <div class="header-right">
                     <form class="header-search" action="/" method="GET">
-                        <input class="header-search-input" type="text" name="search" placeholder="なにをお探しですか？">
+                        <input class="header-search-input" type="text" name="search" placeholder="なにをお探しですか？" value="{{ request('search') }}">
                         <button class="header-search-button" type="submit">検索</button>
                     </form>
                     <nav class="header-nav">

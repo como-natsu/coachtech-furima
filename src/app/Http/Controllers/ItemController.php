@@ -8,32 +8,44 @@ use App\Models\Product;
 class ItemController extends Controller
 {
     public function index(Request $request)
-    {
-        $tab = $request->query('tab', 'recommend'); // デフォルトはおすすめ
-        $products = collect(); // 空で初期化
+{
+    $tab = $request->query('tab', 'recommend'); // おすすめ or マイリスト
+    $keyword = $request->input('search');       // 検索キーワード
 
-        if ($tab === 'mylist') {
-            if (auth()->check()) {
-                // ログインしている → マイリストを取得
-                $products = auth()->user()->likes()
-                    ->with('product.condition', 'product.user')
-                    ->get()
-                    ->pluck('product'); // LikeモデルからProductモデルを取り出す
-            }
-            // 未認証 → 空のまま
-        } else {
-            // おすすめ一覧（全商品）→ 自分の商品を除外
-            $query = Product::with('condition', 'user');
+    $products = collect(); // 初期化
 
-            if (auth()->check()) {
-                $query->where('user_id', '!=', auth()->id());
-            }
+    if ($tab === 'mylist') {
+        if (auth()->check()) {
+            $products = auth()->user()->likes()
+                ->with('product.condition', 'product.user', 'product.categories')
+                ->get()
+                ->pluck('product');
+        }
+    } else {
+        $query = Product::with('condition', 'user', 'categories');
 
-            $products = $query->latest()->get();
+        if (auth()->check()) {
+            $query->where('user_id', '!=', auth()->id());
         }
 
-        return view('items.index', compact('products', 'tab'));
+        // キーワード検索
+        if ($keyword) {
+            $query->where(function($q) use ($keyword) {
+                $q->where('name', 'like', "%{$keyword}%")
+                ->orWhere('description', 'like', "%{$keyword}%")
+                ->orWhereHas('categories', function($q2) use ($keyword) {
+                    $q2->where('name', 'like', "%{$keyword}%");
+                });
+            });
+        }
+
+        $products = $query->latest()->get();
     }
+
+    return view('items.index', compact('products', 'tab'));
+}
+
+
 
     public function show($item_id)
     {

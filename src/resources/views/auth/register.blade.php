@@ -18,7 +18,7 @@
             </div>
             <div class="form-group-content">
                 <div class="form-input-text">
-                    <input type="text" name="name" value="{{ old('name') }}" />
+                    <input type="text" name="name" maxlength="20" value="{{ old('name') }}" />
                 </div>
                 <div class="form-error">
                     @error('name')
