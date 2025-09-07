@@ -1,6 +1,38 @@
-.tab-menu {
+.default-profile-icon,
+.profile-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: #ccc;
+    display: inline-block;
+    object-fit: cover;
+}
+
+.mypage-header {
     display: flex;
-    gap: 10px;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 20px;
+}
+
+.profile-image img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid #ddd;
+}
+
+.edit-button {
+    padding: 6px 12px;
+    background-color: #ffffff;
+    color: #ff4545;
+    border-radius: 8px;
+    border: solid 1px #ff4545;
+    text-decoration: none;
+}
+
+.tab-menu {
     margin-bottom: 20px;
 }
 
@@ -9,14 +41,15 @@
     padding: 8px 16px;
     text-decoration: none;
     background-color: #eee;
+    margin-right: 10px;
     border-radius: 4px;
 }
 
 .tab-menu a.active {
     background-color: #ccc;
+
 }
 
-/* 商品一覧 */
 .products {
     display: flex;
     flex-wrap: wrap;
@@ -46,14 +79,4 @@
     color: white;
     border-radius: 2px;
     font-size: 12px;
-}
-
-@media screen and (max-width: 1540px) {
-    .header {
-        padding: 10px 20px;
-    }
-
-    .product-card {
-        width: calc(25% - 15px);
-    }
 }

@@ -9,11 +9,22 @@ use App\Http\Requests\ProfileRequest;
 
 class MypageController extends Controller
 {
-    public function index()
-    {
-        $user = Auth::user();
-        return view('mypage.mypage',compact('user'));
+    public function index(Request $request)
+{
+    $user = Auth::user();
+
+    $tab = $request->query('tab', 'sell');
+
+    if ($tab === 'sell') {
+        // 出品した商品
+        $products = $user->products()->get();
+    } else {
+        // 購入した商品
+        $products = $user->purchases()->get();
     }
+
+    return view('mypage.mypage', compact('user', 'products', 'tab'));
+}
 
     public function edit()
     {

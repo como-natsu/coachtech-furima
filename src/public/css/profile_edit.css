@@ -1,0 +1,9 @@
+.default-profile-icon,
+.profile-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #ccc;
+    display: inline-block;
+    object-fit: cover;
+}

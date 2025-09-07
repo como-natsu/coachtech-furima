@@ -66,6 +66,9 @@ class User extends Authenticatable
         return $this->hasMany(Comment::class);
     }
 
+    public function purchases() {
+    return $this->belongsToMany(Product::class, 'orders');
+    }
 
 
 }
