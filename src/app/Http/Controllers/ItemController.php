@@ -9,10 +9,11 @@ class ItemController extends Controller
 {
     public function index(Request $request)
 {
-    $tab = $request->query('tab', 'recommend'); // おすすめ or マイリスト
-    $keyword = $request->input('search');       // 検索キーワード
+    $tab = $request->query('tab', 'recommend');
 
-    $products = collect(); // 初期化
+    $keyword = $request->input('search');
+
+    $products = collect();
 
     if ($tab === 'mylist') {
         if (auth()->check()) {
@@ -28,23 +29,20 @@ class ItemController extends Controller
             $query->where('user_id', '!=', auth()->id());
         }
 
-        // キーワード検索
         if ($keyword) {
             $query->where(function($q) use ($keyword) {
                 $q->where('name', 'like', "%{$keyword}%")
-                ->orWhere('description', 'like', "%{$keyword}%")
-                ->orWhereHas('categories', function($q2) use ($keyword) {
-                    $q2->where('name', 'like', "%{$keyword}%");
-                });
+                    ->orWhere('description', 'like', "%{$keyword}%")
+                    ->orWhereHas('categories', function($q2) use ($keyword) {
+                $q2->where('name', 'like', "%{$keyword}%");
+                    });
             });
         }
 
         $products = $query->latest()->get();
     }
-
     return view('items.index', compact('products', 'tab'));
 }
-
 
 
     public function show($item_id)

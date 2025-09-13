@@ -32,7 +32,7 @@
                             <li class="header-nav-item">
                                 <form action="/logout" method="POST">
                                     @csrf
-                                    <button type="submit" class="header-nav-link">ログアウト</button>
+                                    <button type="submit" class="header-nav-button">ログアウト</button>
                                 </form>
                             </li>
                             @endguest

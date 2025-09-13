@@ -45,7 +45,6 @@
 
 .header-search-button {
     display: none;
-    /* 初期非表示 */
     padding: 5px 10px;
 }
 
@@ -68,6 +67,15 @@
 }
 
 .header-nav-link {
+    color: #ffffff;
+    background-color: transparent;
+    padding: 5px 10px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.header-nav-button {
     color: #ffffff;
     background-color: transparent;
     padding: 5px 10px;
