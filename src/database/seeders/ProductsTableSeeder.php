@@ -31,7 +31,7 @@ class ProductsTableSeeder extends Seeder
             'name' => '腕時計',
             'price' => '15000',
             'brand_name' => 'Rolax',
-            'image' => 'products/Armani+Mens+Clock.jpg',
+            'image' => 'storage/products/Armani+Mens+Clock.jpg',
             'description' => 'スタイリッシュなデザインのメンズ腕時計',
             'sold' => false,
             'user_id' => $user ->id,

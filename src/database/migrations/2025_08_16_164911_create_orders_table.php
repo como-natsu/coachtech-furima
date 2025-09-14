@@ -17,7 +17,7 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('product_id')->constrained('products')->onDelete('cascade');
-            $table->string('status');
+            $table->string('payment_method');
             $table->string('postcode',8);
             $table->string('address');
             $table->string('building')->nullable();

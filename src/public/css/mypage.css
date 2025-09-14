@@ -1,3 +1,7 @@
+.maypage-content {
+    margin-top: 50px;
+}
+
 .profile-image {
     width: 120px;
     height: 120px;
@@ -18,35 +22,43 @@
 .mypage-header {
     display: flex;
     align-items: center;
+    justify-content: center;
     margin-bottom: 20px;
     gap: 20px;
+}
+
+.profile-name {
+    margin: 30px;
 }
 
 
 .edit-button {
     padding: 6px 12px;
     background-color: #ffffff;
-    color: #ff4545;
+    color: #ff2020;
     border-radius: 8px;
-    border: solid 1px #ff4545;
+    border: solid 1px #ff2020;
     text-decoration: none;
+    margin-left: 100px;
 }
 
 .tab-menu {
     margin-bottom: 20px;
+    border-bottom: solid 1px #424242;
 }
 
 .tab-menu a {
     display: inline-block;
-    padding: 8px 16px;
+    padding: 10px 30px;
     text-decoration: none;
-    background-color: #eee;
-    margin-right: 10px;
+    font-weight: bold;
+    color: #424242;
+    margin: 0px 30px;
     border-radius: 4px;
 }
 
 .tab-menu a.active {
-    background-color: #ccc;
+    color: #ff2020;
 
 }
 

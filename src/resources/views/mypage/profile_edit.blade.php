@@ -21,7 +21,7 @@
                 <div class="form-group-content">
                     <div class="profile-image-container">
                         @if($user->profile_image)
-                        <img src="{{ asset('storage/'.$user->profile_image) }}" alt="プロフィール画像"
+                        <img id="profileImagePreview" src= "{{ asset('storage/'.$user->profile_image) }}" alt="プロフィール画像"
                             class="profile-image">
                         @else
                         <div class="default-profile-icon"></div>
@@ -43,7 +43,7 @@
                 </div>
                 <div class="form-group-content">
                     <div class="form-input-text">
-                        <input type="text" name="name" value="{{ old('name', $user->name) }}">
+                        <input type="text" name="name" maxlength="20" value="{{ old('name', $user->name) }}">
                     </div>
                     <div class="form-error">
                         @error('name')
@@ -103,4 +103,18 @@
         </form>
     </div>
 </div>
+
+<script>
+document.getElementById('profile_image').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        // 一時的に選択画像を表示
+        document.getElementById('profileImagePreview').src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+});
+</script>
 @endsection

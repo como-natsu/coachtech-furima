@@ -1,0 +1,119 @@
+/* 全体中央寄せ */
+.item-detail-wrapper {
+    max-width: 1000px;
+    /* ページ中央の最大幅 */
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* 商品詳細横並び */
+.item-detail {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    /* 画像と商品情報の間隔 */
+    align-items: flex-start;
+}
+
+/* 商品画像 */
+.item-image img {
+    width: 400px;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* 商品情報 */
+.item-info {
+    max-width: 500px;
+}
+
+/* いいね・コメント */
+.like-comment-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 10px 0;
+}
+
+.like-button {
+    background: none;
+    /* 背景を透明に */
+    border: none;
+    /* 枠線を消す */
+    padding: 0;
+    /* 余白をリセット */
+    cursor: pointer;
+    /* クリックできるカーソルに */
+}
+
+.like-button img {
+    display: block;
+    /* 余白を消すためにブロック化 */
+    width: 40px;
+    /* アイコンサイズ調整 */
+    height: 40px;
+}
+
+.like-button img.liked {
+    filter: brightness(0) saturate(100%) invert(33%) sepia(89%) saturate(5534%) hue-rotate(328deg) brightness(95%) contrast(101%);
+}
+
+/* 購入ボタン */
+.purchase-wrapper {
+    margin: 15px 0;
+}
+
+.btn-purchase {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 25px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-purchase:hover {
+    background-color: #218838;
+}
+
+.btn-purchase.disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* コメント欄 */
+.item-comments {
+    max-width: 500px;
+    /* 商品情報の幅と同じ */
+    margin: 30px auto 0 auto;
+    padding-top: 20px;
+    border-top: 1px solid #ddd;
+}
+
+.item-comments textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    resize: vertical;
+}
+
+.btn-submit {
+    margin-top: 5px;
+    padding: 8px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* コメントリスト */
+.comment-list .comment {
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    background-color: #f7f7f7;
+    border-radius: 5px;
+}

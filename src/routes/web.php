@@ -4,6 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\MypageController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\LikeController;
+use App\Http\Controllers\CommentController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -26,4 +30,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/mypage',[MypageController::class,'index']);
     Route::get('/mypage/profile', [MypageController::class, 'edit']);
     Route::post('/mypage/profile', [MypageController::class, 'update']);
+    Route::post('/item/{item}/like', [LikeController::class, 'toggleLike']);
+    Route::post('/item/{item}/comment', [CommentController::class, 'store']);
+    Route::get('/item/{item}/comment/count', [CommentController::class, 'count']);
 });

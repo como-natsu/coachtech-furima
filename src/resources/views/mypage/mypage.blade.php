@@ -15,7 +15,7 @@
             @endif
         </div>
 
-        <h2>{{ $user->name }}</h2>
+        <h2 class="profile-name">{{ $user->name }}</h2>
 
         <div class="profile-button">
             <a href="{{ url('/mypage/profile') }}" class="edit-button">プロフィールを編集</a>

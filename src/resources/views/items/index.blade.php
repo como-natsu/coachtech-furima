@@ -6,7 +6,7 @@
 
 
 @section('content')
-<div class="container">
+<div class="products-container">
     <div class="tab-menu">
         <a href="{{ url('/') }}" class="{{ $tab === 'recommend' ? 'active' : '' }}">おすすめ</a>
         <a href="{{ url('/?tab=mylist') }}" class="{{ $tab === 'mylist' ? 'active' : '' }}">マイリスト</a>
