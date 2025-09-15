@@ -10,10 +10,6 @@
         <h1>プロフィール設定</h1>
     </div>
 
-    @if(session('message'))
-    <div class="alert-success">{{ session('message') }}</div>
-    @endif
-
     <div class="profile">
         <form class="profile-form" action="{{ url('/mypage/profile') }}" method="POST" enctype="multipart/form-data">
             @csrf

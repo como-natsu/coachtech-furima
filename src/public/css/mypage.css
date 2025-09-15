@@ -92,3 +92,14 @@
     border-radius: 2px;
     font-size: 12px;
 }
+
+.product-card-link {
+    text-decoration: none;
+}
+
+.product-card-name {
+    font-size: 18px;
+    color: #000000;
+    text-align: left;
+    padding-left: 10px;
+}

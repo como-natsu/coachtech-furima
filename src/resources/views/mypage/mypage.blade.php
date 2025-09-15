@@ -4,6 +4,10 @@
 <link rel="stylesheet" href="{{ asset('css/mypage.css') }}">
 @endsection
 
+    @if(session('message'))
+    <div class="alert-success">{{ session('message') }}</div>
+    @endif
+
 @section('content')
 <div class="maypage-content">
     <div class="mypage-header">
@@ -30,9 +34,9 @@
     <div class="products">
         @forelse($products as $product)
         <div class="product-card">
-            <a href="{{ url('/item/'.$product->id) }}">
+            <a class="product-card-link" href="{{ url('/item/'.$product->id) }}">
                 <img src="{{ asset($product->image) }}" alt="{{ $product->name }}">
-                <p>{{ $product->name }}</p>
+                <p class="product-card-name">{{ $product->name }}</p>
                 @if($product->sold)
                 <span class="sold-badge">Sold</span>
                 @endif

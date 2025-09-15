@@ -43,6 +43,17 @@
     border-radius: 4px;
 }
 
+.product-card-link {
+    text-decoration: none;
+}
+
+.product-card-name {
+    font-size: 18px;
+    color: #000000;
+    text-align: left;
+    padding-left: 10px;
+}
+
 .sold-badge {
     display: inline-block;
     margin-top: 5px;
