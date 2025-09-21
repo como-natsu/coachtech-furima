@@ -38,4 +38,6 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/purchase/address/{item_id}', [AddressController::class, 'edit']);
     Route::patch('/purchase/address/{item_id}', [AddressController::class, 'update']);
     Route::get('/purchase/{item_id}', [PurchaseController::class, 'purchase']);
+    Route::get('/sell', [ItemController::class, 'sell']);
+    Route::post('/sell', [ItemController::class, 'store']);
 });

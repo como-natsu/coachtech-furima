@@ -18,14 +18,7 @@ class ProductsTableSeeder extends Seeder
     public function run()
     {
 
-        $user = User::create([
-            'name' => 'テストユーザー',
-            'email' => 'testuser@example.com',
-            'password' => Hash::make('password'),
-            'postcode' => '123-4567',
-            'address' => '東京都テスト区ダミー町1-2-3',
-        ]);
-
+        $user = User::first();
 
         $product = Product::create([
             'name' => '腕時計',
