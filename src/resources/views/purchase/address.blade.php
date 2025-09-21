@@ -10,14 +10,10 @@
         <h1>住所の変更</h1>
     </div>
 
-    @if(session('message'))
-    <div class="alert-success">{{ session('message') }}</div>
-    @endif
-
     <div class="profile">
-        <form class="profile-form" action="{{ url('/purchase/'.$product->id) }}" method="POST">
+        <form class="profile-form" action="{{ url('/purchase/address/'.$product->id) }}" method="POST">
             @csrf
-
+            @method('PATCH')
             <div class="form-group">
                 <div class="form-group-title">
                     <span class="form-label-item">郵便番号</span>

@@ -31,11 +31,11 @@ Route::post('/register', [RegisteredUserController::class, 'store']);
 Route::middleware(['auth'])->group(function(){
     Route::get('/mypage',[MypageController::class,'index']);
     Route::get('/mypage/profile', [MypageController::class, 'edit']);
-    Route::post('/mypage/profile', [MypageController::class, 'update']);
+    Route::patch('/mypage/profile', [MypageController::class, 'update']);
     Route::post('/item/{item}/like', [LikeController::class, 'toggleLike']);
     Route::post('/item/{item}/comment', [CommentController::class, 'store']);
     Route::get('/item/{item}/comment/count', [CommentController::class, 'count']);
     Route::get('/purchase/address/{item_id}', [AddressController::class, 'edit']);
-    Route::post('/purchase/address/{item_id}', [AddressController::class, 'update']);
+    Route::patch('/purchase/address/{item_id}', [AddressController::class, 'update']);
     Route::get('/purchase/{item_id}', [PurchaseController::class, 'purchase']);
 });

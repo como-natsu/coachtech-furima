@@ -4,11 +4,11 @@
 <link rel="stylesheet" href="{{ asset('css/mypage.css') }}">
 @endsection
 
-    @if(session('message'))
-    <div class="alert-success">{{ session('message') }}</div>
-    @endif
-
 @section('content')
+
+@if(session('message'))
+<div class="alert-success">{{ session('message') }}</div>
+@endif
 <div class="maypage-content">
     <div class="mypage-header">
         <div class="profile-image">

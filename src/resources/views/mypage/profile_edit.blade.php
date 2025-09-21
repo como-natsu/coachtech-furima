@@ -13,6 +13,7 @@
     <div class="profile">
         <form class="profile-form" action="{{ url('/mypage/profile') }}" method="POST" enctype="multipart/form-data">
             @csrf
+            @method('PATCH')
             <div class="form-group">
                 <div class="form-group-content">
                     <div class="profile-image-container">
@@ -107,7 +108,6 @@ document.getElementById('profile_image').addEventListener('change', function(eve
 
     const reader = new FileReader();
     reader.onload = function(e) {
-        // 一時的に選択画像を表示
         document.getElementById('profileImagePreview').src = e.target.result;
     };
     reader.readAsDataURL(file);

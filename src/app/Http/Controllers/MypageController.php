@@ -16,10 +16,8 @@ class MypageController extends Controller
     $tab = $request->query('tab', 'sell');
 
     if ($tab === 'sell') {
-        // 出品した商品
         $products = $user->products()->get();
     } else {
-        // 購入した商品
         $products = $user->purchases()->get();
     }
 
