@@ -21,9 +21,8 @@ class ItemController extends Controller
     if ($tab === 'mylist') {
         if (auth()->check()) {
             $products = auth()->user()->likes()
-                ->with('product.condition', 'product.user', 'product.categories')
-                ->get()
-                ->pluck('product');
+                ->with('condition', 'user', 'categories')
+                ->get();
         }
     } else {
         $query = Product::with('condition', 'user', 'categories');

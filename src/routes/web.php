@@ -37,7 +37,8 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/item/{item}/comment/count', [CommentController::class, 'count']);
     Route::get('/purchase/address/{item_id}', [AddressController::class, 'edit']);
     Route::patch('/purchase/address/{item_id}', [AddressController::class, 'update']);
-    Route::get('/purchase/{item_id}', [PurchaseController::class, 'purchase']);
+    Route::get('/purchase/{item_id}', [PurchaseController::class, 'show']);
+    Route::post('/purchase/{item_id}', [PurchaseController::class, 'store']);
     Route::get('/sell', [ItemController::class, 'sell']);
     Route::post('/sell', [ItemController::class, 'store']);
 });

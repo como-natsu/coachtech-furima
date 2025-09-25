@@ -18,7 +18,7 @@
             </div>
             <div class="form-group-content">
                 <div class="form-input">
-                    <input type="file" name="image" />
+                    <input type="file" name="image" value="{{ old('image') }}"/>
                 </div>
                 <p class="form__error-message">
                     @error('image')

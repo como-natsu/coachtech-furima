@@ -69,7 +69,7 @@ class User extends Authenticatable
     }
 
     public function purchases() {
-    return $this->belongsToMany(Product::class, 'orders');
+    return $this->belongsToMany(Product::class, 'orders','user_id','product_id')->withPivot('payment_method', 'postcode', 'address', 'building')->withTimestamps();
     }
 
 
