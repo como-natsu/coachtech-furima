@@ -36,7 +36,11 @@
                             </option>
                             @endforeach
                         </select>
-                        @error('payment_method')<p>{{ $message }}</p>@enderror
+                        <div class="form-error">
+                            @error('payment_method')
+                            {{ $message }}
+                            @enderror
+                        </div>
                     </div>
 
 
@@ -51,6 +55,21 @@
                         @if($user->building)
                         <p>{{ $user->building }}</p>
                         @endif
+
+                        <input type="hidden" name="postcode" value="{{ $user->postcode }}">
+                        <input type="hidden" name="address" value="{{ $user->address }}">
+                        <input type="hidden" name="building" value="{{ $user->building }}">
+
+                        <div class="form-error">
+                            @error('postcode')
+                            {{ $message }}
+                            @enderror
+                        </div>
+                        <div class="form-error">
+                            @error('address')
+                            {{ $message }}
+                            @enderror
+                        </div>
                     </div>
                 </div>
             </div>

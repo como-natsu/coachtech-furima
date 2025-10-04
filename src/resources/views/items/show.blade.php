@@ -8,7 +8,7 @@
 <div class="item-detail-wrapper">
     <div class="item-detail">
         <div class="item-image">
-            <img src="{{ asset($product->image)}}" alt="{{ $product->name}}">
+            <img class="item-image-content" src="{{ asset($product->image)}}" alt="{{ $product->name}}">
         </div>
         <div class="item-info">
             <h1 class="item-name">{{ $product->name}}</h1>
@@ -16,14 +16,14 @@
             <p class="item-brand">ブランド名 {{ $product->brand_name }}</p>
             @endif
             <p class="item-price">￥{{ number_format($product->price)}} (税込)</p>
+
             <div class="like-comment-container">
                 @auth
                 <form action="{{ url('/item/'.$product->id.'/like') }}" method="POST" class="like-form">
                     @csrf
                     <div class="icon-with-count">
                         <button type="submit" class="like-button">
-                            <img src="{{ asset('storage/icon/like.png') }}" alt="いいね"
-                                class="like-icon {{ auth()->user()->likes->contains($product->id) ? 'liked' : '' }}">
+                            <img class="like-button-image like-icon {{ auth()->user()->likes->contains($product->id) ? 'liked' : '' }}" src="{{ asset('storage/icon/like.png') }}" alt="いいね">
                         </button>
                         <span class="like-count">{{ $product->likes->count() }}</span>
                     </div>
@@ -31,14 +31,14 @@
                 @else
                 <div class="icon-with-count">
                     <a href="{{ url('/login') }}" class="like-button">
-                        <img src="{{ asset('storage/icon/like.png') }}" alt="いいね">
+                        <img class="like-button-image" src="{{ asset('storage/icon/like.png') }}" alt="いいね">
                     </a>
                     <span class="like-count">{{ $product->likes->count() }}</span>
                 </div>
                 @endauth
 
                 <div class="icon-with-count">
-                    <img src="{{ asset('storage/icon/comment.png') }}" alt="コメントアイコン">
+                    <img class="comment-icon-count-image" src="{{ asset('storage/icon/comment.png') }}" alt="コメントアイコン">
                     <span class="comments">{{ $product->comments->count() }}</span>
                 </div>
             </div>
@@ -61,6 +61,7 @@
                 <h2 class="item-title">商品説明</h2>
                 <p class="item-description">{{ $product->description }}</p>
             </div>
+
             <div class="item-content">
                 <h2 class="item-title">商品状態</h2>
                 <p class="item-categories">
@@ -74,14 +75,13 @@
 
             <div class="item-comments">
                 <h2 class="item-title">コメント( {{ $product->comments->count() }} )</h2>
-
                 <div class="comment-list">
                     @foreach($product->comments as $comment)
                     <div class="comment-content">
                         <div class="comment-header">
                             <div class="profile-image">
                                 @if($comment->user->profile_image)
-                                <img src="{{ asset('storage/'.$comment->user->profile_image) }}" alt="プロフィール画像">
+                                <img class="profile-image-img" src="{{ asset('storage/'.$comment->user->profile_image) }}" alt="プロフィール画像">
                                 @else
                                 <div class="default-profile-icon"></div>
                                 @endif
@@ -106,7 +106,7 @@
                         {{ $message }}
                         @enderror
                     </div>
-                    <button class=btn-submit type="submit">コメントを送信する</button>
+                    <button class="btn-submit" type="submit">コメントを送信する</button>
                 </form>
             </div>
         </div>
@@ -115,7 +115,6 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-
     document.querySelectorAll('.like-form').forEach(form => {
         form.addEventListener('submit', function(e) {
             e.preventDefault();
@@ -126,24 +125,21 @@ document.addEventListener('DOMContentLoaded', () => {
             const countSpan = this.querySelector('.like-count');
 
             fetch(`/item/${productId}/like`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': token,
-                        'Accept': 'application/json',
-                    },
-                    body: JSON.stringify({})
-                })
-                .then(res => res.json())
-                .then(data => {
-                    img.classList.toggle('liked', data.liked);
-                    countSpan.textContent = data.count;
-                });
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': token,
+                    'Accept': 'application/json',
+                },
+                body: JSON.stringify({})
+            })
+            .then(res => res.json())
+            .then(data => {
+                img.classList.toggle('liked', data.liked);
+                countSpan.textContent = data.count;
+            });
         });
     });
-
 });
 </script>
-
-
 @endsection

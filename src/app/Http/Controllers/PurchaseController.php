@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Product;
 use App\Models\Order;
 use App\Http\Requests\RegisterRequest;
+use App\Http\Requests\PurchaseRequest;
 
 class PurchaseController extends Controller
 {
@@ -22,7 +23,7 @@ class PurchaseController extends Controller
         return view('purchase.purchase', compact('user', 'product','payment_methods'));
     }
 
-    public function store(Request $request, $item_id) {
+    public function store(PurchaseRequest $request, $item_id) {
 
         $user = Auth::user();
         $product = Product::findOrFail($item_id);

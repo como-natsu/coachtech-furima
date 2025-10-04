@@ -35,7 +35,7 @@
         @forelse($products as $product)
         <div class="product-card">
             <a class="product-card-link" href="{{ url('/item/'.$product->id) }}">
-                <img src="{{ asset($product->image) }}" alt="{{ $product->name }}">
+                <img class="product-card-img" src="{{ asset($product->image) }}" alt="{{ $product->name }}">
                 <p class="product-card-name">{{ $product->name }}</p>
                 @if($product->sold)
                 <span class="sold-badge">Sold</span>

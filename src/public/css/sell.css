@@ -1,0 +1,139 @@
+.sell {
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+
+.sell-form {
+    width: 100%;
+    max-width: 600px;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+}
+
+
+.sell-heading {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-group-content-title {
+    border-bottom:  2px solid #ddd;
+    color: #7a7a7a;
+    margin: 30px 0px;
+}
+
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+
+.form-label {
+    font-weight: bold;
+    margin-bottom: 8px;
+    display: block;
+}
+
+
+.form-input input,
+.form-input select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.form__textarea {
+    width: 100%;
+    max-width: 100%;
+    min-height: 80px;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    resize: none;
+    }
+
+
+
+
+.image-upload-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+
+.custom-file-label {
+    padding: 5px 15px;
+    color: #ff4545;
+    border: 1px solid #ff4545;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 12px;
+}
+
+.custom-file-input {
+    display: none;
+}
+
+.form-error {
+    color: red;
+    font-size: 15px;
+    margin-top: 5px;
+}
+
+
+.form-submit-button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #ff4545;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.categories-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.category-button {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.category-checkbox {
+    display: none;
+}
+
+.category-label {
+    display: inline-block;
+    padding: 8px 16px;
+    border: 2px solid #ff4545;
+    border-radius: 20px;
+    background-color: #fff;
+    color: #ff4545;
+    font-size: 12px;
+    transition: all 0.3s ease;
+}
+
+.category-checkbox:checked+.category-label {
+    background-color: #ff4545;
+    color: #fff;
+    border-color: #ff4545;
+}

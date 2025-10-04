@@ -21,7 +21,7 @@
     color: #ff2020;
 }
 
-/* 商品一覧 */
+
 .products {
     display: flex;
     flex-wrap: wrap;
@@ -37,9 +37,10 @@
     box-sizing: border-box;
 }
 
-.product-card img {
+.product-card-img {
     width: 100%;
-    height: auto;
+    height: 300px;
+    object-fit: cover;
     border-radius: 4px;
 }
 
