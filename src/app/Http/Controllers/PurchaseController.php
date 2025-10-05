@@ -30,13 +30,13 @@ class PurchaseController extends Controller
 
 
         Order::create([
-        'user_id'        => $user->id,
-        'product_id'     => $product->id,
-        'payment_method' => $request->payment_method,
-        'postcode'       => $user->postcode,
-        'address'        => $user->address,
-        'building'       => $user->building,
-    ]);
+            'user_id'        => $user->id,
+            'product_id'     => $product->id,
+            'payment_method' => $request->payment_method,
+            'postcode'       => $request->postcode,
+            'address'        => $request->address,
+            'building'       => $request->building,
+]);
 
         if (!$product->sold) {
         $product->sold = true;

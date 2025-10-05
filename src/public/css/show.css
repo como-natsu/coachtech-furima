@@ -147,6 +147,12 @@
     display: block;
 }
 
+.form-error {
+    height: 20px;
+    color: #ff0000;
+    text-align: left;
+}
+
 .default-profile-icon {
     width: 100%;
     height: 100%;

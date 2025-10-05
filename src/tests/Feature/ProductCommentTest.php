@@ -14,7 +14,7 @@ class ProductCommentTest extends TestCase
     use RefreshDatabase;
 
     // ログイン済みユーザーはコメントを送信できる
-    public function test_logged_in_user_can_send_comment()
+    public function test_login_user_can_send_comment()
     {
         $user = User::create([
             'name' => 'テストユーザー',
@@ -94,7 +94,7 @@ class ProductCommentTest extends TestCase
     }
 
     // コメントが空の場合、バリデーションエラー
-    public function test_comment_required_validation()
+    public function test_comment_required()
     {
         $user = User::create([
             'name' => 'テストユーザー',
