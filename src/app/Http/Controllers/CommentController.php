@@ -9,7 +9,7 @@ use App\Http\Requests\CommentRequest;
 
 class CommentController extends Controller
 {
-    public function store(Request $request, Product $item)
+    public function store(CommentRequest $request, Product $item)
     {
 
         $item->comments()->create([
