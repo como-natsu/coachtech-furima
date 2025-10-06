@@ -28,6 +28,10 @@ class PurchaseController extends Controller
         $user = Auth::user();
         $product = Product::findOrFail($item_id);
 
+        $postcode = $request->filled('postcode') ? $request->postcode : $user->postcode;
+        $address  = $request->filled('address') ? $request->address : $user->address;
+        $building = $request->filled('building') ? $request->building : $user->building;
+
 
         Order::create([
             'user_id'        => $user->id,
@@ -43,6 +47,6 @@ class PurchaseController extends Controller
         $product->save();
     }
 
-        return redirect('/mypage')->with('message', '商品を購入しました');
+        return redirect('/')->with('message', '商品を購入しました');
     }
 }
