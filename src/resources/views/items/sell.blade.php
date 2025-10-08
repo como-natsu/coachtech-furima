@@ -17,10 +17,8 @@
                 <span class="form-label">商品画像</span>
             </div>
             <div class="image-upload-wrapper">
-                <label class="custom-file-label">
-                    画像を選択する
-                    <input type="file" name="image" class="custom-file-input" />
-                </label>
+                <label for="image-input" class="custom-file-label">画像を選択する</label>
+                <input type="file" id="image-input" name="image" class="custom-file-input" />
                 <p class="form-error">
                     @error('image')
                     {{ $message }}
@@ -59,28 +57,28 @@
         </div>
 
         <div class="form-group">
-                <div class="form-group-title">
-                    <span class="form-label">商品の状態</span>
-                </div>
-                <div class="form-group-content">
-                    <div class="form-input">
-                        <select name="condition_id">
-                            <option value="">選択してください</option>
-                            @foreach($conditions as $condition)
-                            <option value="{{ $condition->id }}"
-                                {{ old('condition_id') == $condition->id ? 'selected' : '' }}>
-                                {{ $condition->name }}
-                            </option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <p class="form-error">
-                        @error('condition_id')
-                        {{ $message }}
-                        @enderror
-                    </p>
-                </div>
+            <div class="form-group-title">
+                <span class="form-label">商品の状態</span>
             </div>
+            <div class="form-group-content">
+                <div class="form-input">
+                    <select name="condition_id">
+                        <option value="">選択してください</option>
+                        @foreach($conditions as $condition)
+                        <option value="{{ $condition->id }}"
+                            {{ old('condition_id') == $condition->id ? 'selected' : '' }}>
+                            {{ $condition->name }}
+                        </option>
+                        @endforeach
+                    </select>
+                </div>
+                <p class="form-error">
+                    @error('condition_id')
+                    {{ $message }}
+                    @enderror
+                </p>
+            </div>
+        </div>
 
 
 
@@ -165,7 +163,7 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-    const fileInput = document.querySelector('.custom-file-input');
+    const fileInput = document.getElementById('image-input');
     const label = document.querySelector('.custom-file-label');
 
     fileInput.addEventListener('change', (e) => {

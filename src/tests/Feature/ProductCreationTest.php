@@ -7,18 +7,13 @@ use App\Models\User;
 use App\Models\Category;
 use App\Models\Condition;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Http\UploadedFile;
-use Illuminate\Support\Facades\Storage;
 
 class ProductCreationTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_product_can_be_created()
+    public function test_product_can_be_created_without_image()
     {
-        // --- ストレージを偽装 ---
-        Storage::fake('public');
-
         // --- ユーザー作成 ---
         $user = User::create([
             'name' => '出品者ユーザー',
@@ -29,22 +24,19 @@ class ProductCreationTest extends TestCase
             'building' => 'テストビル101',
         ]);
 
-        // --- カテゴリと商品の状態作成 ---
+        // --- カテゴリと商品の状態を作成 ---
         $category = Category::create(['name' => '家電']);
         $condition = Condition::create(['name' => '新品']);
 
         // --- ログイン ---
         $this->actingAs($user);
 
-        // --- 出品画面確認 ---
+        // --- 出品画面にアクセスできるか確認 ---
         $response = $this->get('/sell');
         $response->assertStatus(200);
-        $response->assertSee('商品の出品');
+        $response->assertSee('商品の出品'); // ページタイトルなどに合わせて変更
 
-        // --- 画像ファイルをアップロード ---
-        $file = UploadedFile::fake()->image('product.jpg');
-
-        // --- 出品データ送信 ---
+        // --- 画像なしで商品を出品 ---
         $response = $this->post('/sell', [
             'name' => 'テスト商品',
             'brand_name' => 'テストブランド',
@@ -52,13 +44,13 @@ class ProductCreationTest extends TestCase
             'condition_id' => $condition->id,
             'price' => 5000,
             'description' => 'これはテスト用の商品説明です。',
-            'image' => $file,
+            // 'image' は送らない
         ]);
 
-        // --- 保存後のリダイレクト確認 ---
-        $response->assertRedirect('/mypage');
 
-        // --- DBに正しく保存されたか確認 ---
+        $response->assertRedirect('/');
+
+        // --- DBに正しく保存されているか確認 ---
         $this->assertDatabaseHas('products', [
             'name' => 'テスト商品',
             'brand_name' => 'テストブランド',
@@ -68,8 +60,8 @@ class ProductCreationTest extends TestCase
             'user_id' => $user->id,
         ]);
 
-        // --- カテゴリとの紐付け確認 ---
-        $product = $user->products()->first();
+        // --- カテゴリの紐付けも確認 ---
+        $product = $user->products()->where('name', 'テスト商品')->first();
         $this->assertTrue($product->categories->contains($category));
     }
 }

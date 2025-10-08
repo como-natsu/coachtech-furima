@@ -83,6 +83,6 @@ class ItemController extends Controller
         $product->categories()->attach($validated['category_id']);
         }
 
-        return redirect('/mypage')->with('message', '商品を出品しました');
+        return redirect('/')->with('message', '商品を出品しました');
     }
 }

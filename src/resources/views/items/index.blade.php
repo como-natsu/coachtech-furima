@@ -6,6 +6,11 @@
 
 
 @section('content')
+
+@if(session('message'))
+<div class="alert-success">{{ session('message') }}</div>
+@endif
+
 <div class="products-container">
     <div class="tab-menu">
         <a href="{{ url('/') }}" class="{{ $tab === 'recommend' ? 'active' : '' }}">おすすめ</a>

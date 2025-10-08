@@ -23,7 +23,8 @@
                     @csrf
                     <div class="icon-with-count">
                         <button type="submit" class="like-button">
-                            <img class="like-button-image like-icon {{ auth()->user()->likes->contains($product->id) ? 'liked' : '' }}" src="{{ asset('storage/icon/like.png') }}" alt="いいね">
+                            <img class="like-button-image like-icon {{ auth()->user()->likes->contains($product->id) ? 'liked' : '' }}"
+                                src="{{ asset('storage/icon/like.png') }}" alt="いいね">
                         </button>
                         <span class="like-count">{{ $product->likes->count() }}</span>
                     </div>
@@ -67,7 +68,7 @@
                 <p class="item-categories">
                     カテゴリー
                     @foreach($product->categories as $category)
-                    {{ $category->name }}@if(!$loop->last), @endif
+                    <span class="category-label">{{ $category->name }}</span>
                     @endforeach
                 </p>
                 <p class="item-condition">商品の状態 {{ $product->condition->name }}</p>
@@ -81,7 +82,8 @@
                         <div class="comment-header">
                             <div class="profile-image">
                                 @if($comment->user->profile_image)
-                                <img class="profile-image-img" src="{{ asset('storage/'.$comment->user->profile_image) }}" alt="プロフィール画像">
+                                <img class="profile-image-img"
+                                    src="{{ asset('storage/'.$comment->user->profile_image) }}" alt="プロフィール画像">
                                 @else
                                 <div class="default-profile-icon"></div>
                                 @endif
@@ -125,19 +127,19 @@ document.addEventListener('DOMContentLoaded', () => {
             const countSpan = this.querySelector('.like-count');
 
             fetch(`/item/${productId}/like`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': token,
-                    'Accept': 'application/json',
-                },
-                body: JSON.stringify({})
-            })
-            .then(res => res.json())
-            .then(data => {
-                img.classList.toggle('liked', data.liked);
-                countSpan.textContent = data.count;
-            });
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': token,
+                        'Accept': 'application/json',
+                    },
+                    body: JSON.stringify({})
+                })
+                .then(res => res.json())
+                .then(data => {
+                    img.classList.toggle('liked', data.liked);
+                    countSpan.textContent = data.count;
+                });
         });
     });
 });

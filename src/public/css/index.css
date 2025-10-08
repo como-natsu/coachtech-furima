@@ -65,6 +65,15 @@
     font-size: 12px;
 }
 
+.alert-success {
+    padding: 10px 20px;
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
 @media screen and (max-width: 1540px) {
     .header {
         padding: 10px 20px;

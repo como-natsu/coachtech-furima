@@ -6,9 +6,6 @@
 
 @section('content')
 
-@if(session('message'))
-<div class="alert-success">{{ session('message') }}</div>
-@endif
 <div class="maypage-content">
     <div class="mypage-header">
         <div class="profile-image">
