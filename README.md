@@ -3,7 +3,9 @@
 ## 環境構築
 ### Dockerビルド
 1.git clone  git@github.com:como-natsu/coachtech-furima.git  
-2.docker-compose up -d --build  
+2.cd coachtech-furima  
+3.DockerDesktopアプリを立ち上げる  
+4.docker-compose up -d --build  
 
 *MySQLは、OSによって起動しない場合があるのでそれぞれのPCに合わせて docker-compose.yml ファイルを編集してください。  
 
@@ -22,13 +24,22 @@
 6.php artisan db:seed  
 7.php artisan storage:link  
 
+### 注意（ブラウザアクセス時の権限エラー
+*Laravel は storage と bootstrap/cache に書き込み権限が必要です。  
+ブラウザでアクセスした際に権限エラーが出る場合があります。  
+その場合は src/ 内で以下を実行してください。  
+1.sudo chmod -R 775 storage bootstrap/cache  
+2.sudo chown -R www-data:www-data storage   bootstrap/cache  
+macOS やユーザー環境によっては www-data:www-data を $(whoami):$(whoami) に置き換えてください。  
+
+
 
 ## 使用技術(実行環境)
-- PHP 8.1.33
+- PHP 8.4.7
 - Laravel 8.83.29
-- MySQL 15.1
-- Docker 28.0.1
-- Docker Compose v2.33.1
+- MySQL 11.8.3
+- Docker 28.3.2
+- Docker Compose v2.38.2
 
 ## ER図
 ![ER Diagram](./erd.png)
