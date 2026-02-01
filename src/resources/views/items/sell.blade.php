@@ -124,7 +124,7 @@
 
             <div class="form-group">
                 <div class="form-group-title">
-                    <span class="form-label">商品説明</span>
+                    <span class="form-label">商品の説明</span>
                 </div>
                 <div class="form-group-content">
                     <textarea class="form__textarea" name="description" id="" cols="30"
@@ -139,11 +139,11 @@
 
             <div class="form-group">
                 <div class="form-group-title">
-                    <span class="form-label">値段</span>
+                    <span class="form-label">販売価格</span>
                 </div>
                 <div class="form-group-content">
                     <div class="form-input">
-                        <input type="text" name="price" value="{{ old('price') }}" />
+                        <input type="number" name="price" value="{{ old('price') }}" />
                     </div>
                     <p class="form-error">
                         @error('price')

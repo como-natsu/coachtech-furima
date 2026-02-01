@@ -34,7 +34,7 @@ class ProductCreationTest extends TestCase
         // --- 出品画面にアクセスできるか確認 ---
         $response = $this->get('/sell');
         $response->assertStatus(200);
-        $response->assertSee('商品の出品'); // ページタイトルなどに合わせて変更
+        $response->assertSee('商品の出品');
 
         // --- 画像なしで商品を出品 ---
         $response = $this->post('/sell', [

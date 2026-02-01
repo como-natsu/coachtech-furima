@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\RegisterRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Auth\Events\Registered;
 
 class RegisteredUserController extends Controller
 {
@@ -21,8 +21,10 @@ class RegisteredUserController extends Controller
             'address' => '',
         ]);
 
+        event(new Registered($user));
+
         Auth::login($user);
 
-        return redirect('/mypage/profile');
+        return redirect()->route('verification.notice');
     }
 }

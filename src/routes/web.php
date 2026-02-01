@@ -26,9 +26,15 @@ Route::get('/', [ItemController::class,'index']);
 Route::get('/item/{item_id}', [ItemController::class, 'show']);
 
 Route::post('/register', [RegisteredUserController::class, 'store']);
+Route::get('/email/verify', function () {
+return view('auth.verify-email');
+})->middleware(['auth'])->name('verification.notice');
+Route::get('/email/verify/{id}/{hash}', [VerifyEmailController::class,'__invoke'])
+    ->middleware(['signed'])
+    ->name('verification.verify');
 
 
-Route::middleware(['auth'])->group(function(){
+Route::middleware(['auth','verified'])->group(function(){
     Route::get('/mypage',[MypageController::class,'index']);
     Route::get('/mypage/profile', [MypageController::class, 'edit']);
     Route::patch('/mypage/profile', [MypageController::class, 'update']);

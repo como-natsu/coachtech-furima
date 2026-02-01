@@ -21,7 +21,7 @@
                     </div>
                     <div class="item-info">
                         <h1 class="item-info-name">{{ $product->name}}</h1>
-                        <p class="item-info-price">￥{{ number_format($product->price)}} (税込)</p>
+                        <p class="item-info-price">￥{{ number_format($product->price)}}</p>
                     </div>
                 </div>
 
@@ -76,8 +76,8 @@
 
 
             <div class="purchase-summary">
-                <p>商品金額：￥{{ number_format($product->price) }} (税込)</p>
-                <p>選択した支払方法：<span id="selected-method">未選択</span></p>
+                <p>商品代金  ￥{{ number_format($product->price) }} </p>
+                <p>支払方法  <span id="selected-method">未選択</span></p>
                 <button class="purchase-summary-button" type="submit">購入する</button>
             </div>
         </div>
