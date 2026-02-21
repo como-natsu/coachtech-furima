@@ -3,3 +3,5 @@ docker/mysql/data/
 # Docker環境変数
 .env
 src/.env.testing
+/vendor/
+
